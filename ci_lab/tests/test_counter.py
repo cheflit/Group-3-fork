@@ -277,3 +277,17 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
+
+    # ===========================
+    # Test: Validate error response in set_counter_value when the value is not an integer
+    # Author: Adrian Torres
+    # ===========================
+    def test_set_counter_value_invalid_type(self, client):
+        # Create a counter first
+        client.post("/counters/testcounter")
+
+        # Try to set its value to a non-integer
+        response = client.put("/counters/testcounter/set/notanint")
+
+        assert response.status_code == 400
+        assert response.get_json() == {"error": "Invalid counter value"}
