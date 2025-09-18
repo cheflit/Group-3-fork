@@ -44,10 +44,10 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" = "success" ]; then
-            echo "ICON=?" >> $GITHUB_ENV
+            echo "ICON=✅" >> $GITHUB_ENV
             echo "STATUS=PASS" >> $GITHUB_ENV
           else
-            echo "ICON=?" >> $GITHUB_ENV            
+            echo "ICON=❌" >> $GITHUB_ENV            
             echo "STATUS=FAIL" >> $GITHUB_ENV
           fi
       - name: Comment PR
