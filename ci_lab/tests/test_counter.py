@@ -108,8 +108,8 @@ class TestCounterEndpoints:
         response = client.get('/counters/total')
 
         assert response.status_code == HTTPStatus.OK
-        
-        # TODO: Add an assertion to check the correct total value
+
+        assert response.get_json() == {"total": 1}
 
     # ===========================
     # Test: Retrieve top N highest counters
