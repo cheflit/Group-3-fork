@@ -105,7 +105,7 @@ class TestCounterEndpoints:
         client.post('/counters/test2')
         client.put('/counters/test1')
 
-        response = client.get('/counters/total')
+        response = client.get('/counters/tota')
 
         assert response.status_code == HTTPStatus.OK
         
