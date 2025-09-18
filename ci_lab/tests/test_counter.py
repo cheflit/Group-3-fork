@@ -128,9 +128,11 @@ class TestCounterEndpoints:
         response = client.get('/counters/top/2')
 
         assert response.status_code == HTTPStatus.OK
-        assert len(response.get_json()) <= 2  
+        assert len(response.get_json()) <= 2
 
-        # TODO: Add an assertion to ensure the returned counters are sorted correctly
+        data = response.get_json()
+        values = list(data.values())
+        assert values == sorted(values, reverse=True)
 
     # ===========================
     # Test: Retrieve top N lowest counters
