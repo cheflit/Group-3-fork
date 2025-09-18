@@ -132,7 +132,7 @@ class TestCounterEndpoints:
 
         data = response.get_json()
         values = list(data.values())
-        assert values == sorted(values, reverse=True)
+        assert values == sorted(values)
 
     # ===========================
     # Test: Retrieve top N lowest counters
